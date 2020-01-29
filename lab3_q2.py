@@ -21,12 +21,7 @@ o_wg = pyrtl.Output(bitwidth=1, name='o_wg')
 
 # 2:1 MUX implementation using only AND, OR, and NOT gates
 # < add your code here >
-a0, a1, b0, b1 = pyrtl.WireVector(), pyrtl.WireVector(), pyrtl.WireVector(), pyrtl.WireVector()
-a0 <<= ~a & ~s
-a1 <<= a & ~s
-b0 <<= ~b & s
-b1 <<= b & s
-o_wg <<= a0 | a1 | b0 | b1
+o_wg |= (a & ~s) | (b & s)
 
 # Simulate and test the design for 8 clock cycles using random inputs
 sim_trace = pyrtl.SimulationTrace()
